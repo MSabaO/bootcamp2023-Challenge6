@@ -18,22 +18,46 @@ h1 {
   font-size: 1.8 rem;
   background-color: rgb(154, 70, 84);
 }
+
+h3{
+font-size: medium;
+font-weight: bold;
+}
 .container {
   display: flex;
   padding: 30px;
 }
 .weather-input {
   width: 500px;
+  padding: 30px;
 }
 
 .weather-input input {
   width: 100%;
   height: 50px;
   outline: none;
-  padding: 0 17px;
-  font-size: 2rem;
+  padding: 0 20px;
+  margin: 15px 0 15px 0;
+  font-size: 1.25rem;
   border-radius: 5px;
   border: 1px solid white;
+}
+
+.weather-input .separator {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 2px;
+  width: 100%;
+  margin: 20px 0;
+  background-color: pink;
+
+}
+
+.weather-input .separator::before {
+  content: "or";
+   padding: 0 15px;
+   margin-top: -4px;
 }
 
 .weather-data {
@@ -42,4 +66,89 @@ h1 {
 
 button {
   font-size: large;
+  padding: 10px;
+  margin: 5px;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-around;
+  border-radius:10px;
+  background-color:rgb(154, 70, 84); 
+  color: white;
+  padding: 20px 50px 20px 20px;
+}
+
+.current-weather h2 {
+  font-size: 2rem;
+  }
+
+  .weather-data h4 {
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .current-weather .icon img {
+    max-width: 150px;
+    margin: 5px 0 -10px;
+      }
+
+.current-weather .icon h6 {
+ text-transform: capitalize;
+  }
+
+  .card img{
+    max-width: 150px;
+  }
+  .days-forecast h2{
+    margin: 20px 0;
+    font-size: 1.25rem;
+  }
+.weather-cards {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+}
+
+.weather-cards .card{
+  background-color: rgb(212, 177, 180);
+  padding: 15px 15px;
+  border-radius: 10px;
+  width: calc(100% / 5);
+}
+
+@media (max-width:1400px) {
+  .weather-data .current-weather {
+    padding: 20px;
+  }
+  .weather-cards {
+    flex-wrap: wrap;
+  }
+  .weather-cards .card {
+    width: calc(100% / 4 -15px);
+  }
+}
+@media (max-width: 1200px) {
+  .weather-cards .card {
+    width: calc(100% / 3 -15px);
+  }
+}
+@media (max-width: 950px) {
+  .weather-input{
+    width: 450px;
+      }
+.weather-cards .card {
+  width: calc(100% / 2 -10px);
+}
+    }
+@media (max-width:750) {
+  .container{
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  .weather-input {
+    width: 100%;
+  }
+  
 }

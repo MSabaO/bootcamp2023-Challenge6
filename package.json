@@ -1,0 +1,16 @@
+{
+  "name": "bootcamp2023-challenge6",
+  "version": "1.0.0",
+  "description": "This challenge was completed to demonstrate the use what I have learned of third-party APIs during week #5 of the UNB Coding Bootcamp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "8.2.4",
+    "express": "^4.16.4"
+  }
+}
