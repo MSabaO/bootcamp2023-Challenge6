@@ -15,12 +15,12 @@ h1 {
   color: white;
   padding: 10px 0;
   text-align: center;
-  font-size: 1.8 rem;
+  font-size: 1 rem;
   background-color: rgb(154, 70, 84);
 }
 
 h3{
-font-size: medium;
+font-size: small;
 font-weight: bold;
 }
 .container {
