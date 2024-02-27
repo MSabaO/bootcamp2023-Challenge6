@@ -1,16 +1,17 @@
 // api for 5 days weather:
 // start
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-let AUTH = "df7ffa53ca8a5ccc2ffc1a065854c8d6"; //API key for weather
+const AUTH = "df7ffa53ca8a5ccc2ffc1a065854c8d6"; //API key for weather
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const weatherCardsDiv = document.querySelector(".weather-cards");
-
+const currentWeatherDiv = document.querySelector(".current-weather");
 
 //Updating weather cards
 const getWeatherDetails = (cityName, lat, lon) => {
 const createWeatherCard = (weatherItem) => {
-    return `   <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
+    return `  <li class="card">
+             <h3>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h3>
               <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="icon-weather">
               <h4>Temperature: ${(weatherItem.main.temp -273.15).toFixed(2)} °C</h4>
               <h4> Wind: ${weatherItem.wind.speed}m/s</h4>
@@ -33,9 +34,19 @@ const APIWEATHER_URL =
        return uniqueForecastDays.push(forecastDate);
   }
   });
+//clearing previous
+cityInput.value = "";
+currentWeatherDiv.innerHTML = "";
+weatherCardsDiv.innerHTML = "";
+
+//creating each weather card
 console.log(fiveDaysForecast);
 fiveDaysForecast.forEach(weatherItem => {
-  weatherCardsDiv.insertAdjacentElement("beforeend", createWeatherCard(weatherItem));
+  // const html = createWeatherCard(cityName, weatherItem, index);
+  // if (index === 0) {
+  //   currentWeatherDiv.insertAdjacentElement
+  // }
+  weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(weatherItem));
 });
 
 
