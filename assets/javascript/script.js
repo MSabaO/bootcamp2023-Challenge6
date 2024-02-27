@@ -7,6 +7,54 @@ const searchButton = document.querySelector(".search-btn");
 const weatherCardsDiv = document.querySelector(".weather-cards");
 const currentWeatherDiv = document.querySelector(".current-weather");
 
+//local storage
+// Function to store city in local storage
+const addToLocalStorage = (city) => {
+  let previousCities = JSON.parse(localStorage.getItem('previousCities')) || [];
+  console.log('Before:', previousCities);
+
+  if (!previousCities.includes(city)) {
+    previousCities.push(city);
+    localStorage.setItem('previousCities', JSON.stringify(previousCities));
+    console.log('After:', previousCities);
+  }
+};
+
+// Function to get previous cities from local storage
+const getPreviousCitiesFromLocalStorage = () => {
+  const previousCitiesJSON = localStorage.getItem('previousCities');
+  return previousCitiesJSON ? JSON.parse(previousCitiesJSON) : [];
+};
+
+
+// Function to update the UI for previous searches
+  const updatePreviousSearches = () => {
+  console.log("Updating previous searches...");
+  const previousCities = getPreviousCitiesFromLocalStorage();
+  console.log("Previous Cities:", previousCities);
+  const searchHistoryDiv = document.querySelector(".search-history");
+
+  // Clear previous search history
+  searchHistoryDiv.innerHTML = "";
+
+  // Display previous search history
+  previousCities.forEach((city) => {
+    const historyItem = document.createElement("div");
+    historyItem.textContent = city;
+    searchHistoryDiv.appendChild(historyItem);
+
+    // Add click event listener to history item to perform a new search
+    historyItem.addEventListener("click", () => {
+      cityInput.value = city;
+      getCityCoordinates();
+    });
+  });
+};
+
+// Call the updatePreviousSearches function when the page loads to show previous searches
+updatePreviousSearches();
+
+
 //Updating weather cards
 
 const createWeatherCard = (cityName, weatherItem, index) => {
@@ -72,6 +120,8 @@ const getCityCoordinates = () => {
   //get city name without spaces
   const cityName = cityInput.value.trim(); //get typed entered city without spaces
   if(!cityName) return; //Return if empty
+   addToLocalStorage(cityName);
+   updatePreviousSearches();
   const GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${AUTH}`;
 
 //Return city coordinates (name, lat and long) from API
@@ -86,4 +136,4 @@ fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
 }
 
 searchButton.addEventListener("click", getCityCoordinates);
-// cityInput.addEventListener("keyup", e => e.key === "Enter" & getCityCoordinates());
+cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates());
