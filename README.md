@@ -1,38 +1,37 @@
-# Weather App (Pending to update)
+# Weather App 
 
 ## Description
 
-This challenge was completed to demonstrate the use what I have learned of third-party APIs during week #5 of the UNB Coding Bootcamp.
+This challenge was completed to demonstrate the use what I have learned of server-side APIs during the UNB Coding Bootcamp.
 
 User Story:
-AS AN employee with a busy schedule;
-I WANT to add important events to a daily planner;
-SO THAT I can manage my time effectively
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
 
 Screenshot of functional page:
-
-Past Present Future
-![Alt text](image.png)
+![alt text](image.png)
 
 ## Installation
 
-To access the webpage, please follow this link in a web browser: https://msabao.github.io/bootcamp2023-Challenge5/
+To access the webpage, please follow this link in a web browser: https://msabao.github.io/bootcamp2023-Challenge6/
 
 Repository link:
-https://github.com/MSabaO/bootcamp2023-Challenge5
+https://github.com/MSabaO/bootcamp2023-Challenge6
 
 ## Usage
 
 What can I do?
 
-- Daily planner to create a schedule
-- Current day is displayed at the top of the calendar
-- Time blocks for standard business hours of 9am to 5pm, plus additional under the banner for display purposes after hours
-- Each time block is color-coded to indicate whether it is in the past (red), present(gray), or future(green)
-- I can enter an event end click the save button for that time block
-- Text for that event is saved in local storage even if I refresh the page
-  Additional:
-- I can clear the scheduler
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
 
 ## License
 

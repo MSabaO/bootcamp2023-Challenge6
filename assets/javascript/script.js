@@ -11,12 +11,12 @@ const currentWeatherDiv = document.querySelector(".current-weather");
 // Function to store city in local storage
 const addToLocalStorage = (city) => {
   let previousCities = JSON.parse(localStorage.getItem('previousCities')) || [];
-  console.log('Before:', previousCities);
+  // console.log('Before:', previousCities); // for testing
 
   if (!previousCities.includes(city)) {
     previousCities.push(city);
     localStorage.setItem('previousCities', JSON.stringify(previousCities));
-    console.log('After:', previousCities);
+    // console.log('After:', previousCities);// for testing
   }
 };
 
@@ -29,9 +29,7 @@ const getPreviousCitiesFromLocalStorage = () => {
 
 // Function to update the UI for previous searches
   const updatePreviousSearches = () => {
-  console.log("Updating previous searches...");
-  const previousCities = getPreviousCitiesFromLocalStorage();
-  console.log("Previous Cities:", previousCities);
+   const previousCities = getPreviousCitiesFromLocalStorage();
   const searchHistoryDiv = document.querySelector(".search-history");
 
   // Clear previous search history
@@ -61,6 +59,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
   if (index === 0) { 
   return `  <div class="details">
             <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
+            
             <h3>Temperature: ${(weatherItem.main.temp -273.15).toFixed(2)} °C</h3>
             <h3> Wind:  ${weatherItem.wind.speed} m/s</h3>
             <h3>Humidity: ${weatherItem.main.humidity}%</h3>
@@ -101,7 +100,7 @@ currentWeatherDiv.innerHTML = "";
 weatherCardsDiv.innerHTML = "";
 
 //creating each weather card
-console.log(fiveDaysForecast);
+// console.log(fiveDaysForecast); //for testing
 fiveDaysForecast.forEach((weatherItem, index) => {
   const html = createWeatherCard(cityName, weatherItem, index);
   if (index === 0) {
@@ -126,11 +125,11 @@ const getCityCoordinates = () => {
 
 //Return city coordinates (name, lat and long) from API
 fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
-  // console.log(data);
+  // console.log(data); //for testing
     if(!data.length) return alert(`No coordinates were found for ${cityName}`);
-    const {name, lat, lon} = data[0];
-     getWeatherDetails(name,lat,lon);
-  }).catch(() => {
+    const {name, lat, lon, country} = data[0];
+     getWeatherDetails(name,lat,lon,country);
+            }).catch(() => {
     alert("An error ocurred while fetching location.");
   });
 }

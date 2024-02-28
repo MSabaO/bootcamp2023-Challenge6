@@ -69,6 +69,11 @@ button {
   padding: 10px;
   margin: 5px;
 }
+.search-history {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
 
 .current-weather {
   display: flex;
